@@ -24,6 +24,11 @@ $students = $studentDAO->getAll();
     <table class="table">
         <thead>
         <tr>
+            <form action="create-student.php" method="POST" style="display: inline-block">
+                <button type="submit" class="btn btn-info">Thêm mới</button>
+            </form>
+        </tr>
+        <tr>
             <th>#</th>
             <th>Name</th>
             <th>Age</th>

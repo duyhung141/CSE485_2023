@@ -38,8 +38,8 @@ $students = $studentDAO->getAll();
             <td><?php echo $student->getName()?></td>
             <td><?php echo $student->getAge()?></td>
             <td>
-                <a href="update.php?id=<?php echo $student->getId()?>" class="btn btn-warning">Sửa</a>
-                <a href="delete.php?id=<?php echo $student->getId()?>" class="btn btn-danger">Xóa</a>
+                <a href="update-student.php?id=<?php echo $student->getId()?>" class="btn btn-warning">Sửa</a>
+                <a href="delete-student.php?id=<?php echo $student->getId()?>" class="btn btn-danger">Xóa</a>
             </td>
         </tr>
         <?php }?>

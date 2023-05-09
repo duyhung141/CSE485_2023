@@ -3,9 +3,9 @@
 namespace Controllers;
 
 use http\Env\Request;
-use Student;
+use Models\Student;
 
-include_once 'Student.php';
+//include_once __DIR__ . DIRECTORY_SEPARATOR . 'Models' . DIRECTORY_SEPARATOR . 'Student.php';
 
 class StudentDAO
 {

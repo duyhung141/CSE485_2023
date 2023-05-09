@@ -1,4 +1,7 @@
 <?php
+
+use Controllers\StudentDAO;
+
 include_once 'Student.php';
 include_once 'StudentDAO.php';
 $studentDAO = new StudentDAO();
@@ -35,7 +38,7 @@ $students = $studentDAO->getAll();
             <td><?php echo $student->getAge()?></td>
             <td>
                 <a href="update.php?id=<?php echo $student->getId()?>" class="btn btn-warning">Sửa</a>
-                <a href="delete.php?id=<?php echo $student->getId()?>"  class="btn btn-danger">Xóa</a>
+                <a href="delete.php?id=<?php echo $student->getId()?>" class="btn btn-danger">Xóa</a>
             </td>
         </tr>
         <?php }?>

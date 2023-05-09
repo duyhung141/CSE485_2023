@@ -11,12 +11,16 @@ class StudentDAO
 {
     public function create(Request $request)
     {
+        $file_path = "C:/xampp/htdocs/CSE485_2023/BTTH01/data.txt";
+        $file = fopen($file_path, 'a+');
+
         $name = $request->name;
         $age = $request->age;
 
-        $student = new Student();
-        $student->setName($name);
-        $student->setName($age);
+        $data = "10, " . $name . ", " . $age.'\n';
+        fwrite($file, $data);
+        fclose($file);
+
     }
 
     public function read()

@@ -32,22 +32,26 @@ $students = $studentDAO->getAll();
         </thead>
         <tbody>
         <?php
-        foreach ($students as $student){?>
-        <tr>
-            <td><?php echo $student->getId()?></td>
-            <td><?php echo $student->getName()?></td>
-            <td><?php echo $student->getAge()?></td>
-            <td>
-                <form action="update-student.php" method="POST" style="display: inline-block">
-                    <input type="hidden" name="id" value="<?php echo $student->getId() ?>">
-                    <button type="submit" class="btn btn-warning" >Sửa</button>
-                </form>
-                <form action="delete-student.php" method="POST" style="display: inline-block">
-                    <input type="hidden" name="id" value="<?php echo $student->getId() ?>">
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</button>
-                </form>            </td>
-        </tr>
-        <?php }?>
+        foreach ($students as $student) {
+            ?>
+            <tr>
+                <td><?php echo $student->getId() ?></td>
+                <td><?php echo $student->getName() ?></td>
+                <td><?php echo $student->getAge() ?></td>
+                <td>
+                    <form action="update-student.php" method="POST" style="display: inline-block">
+                        <input type="hidden" name="id" value="<?php echo $student->getId() ?>">
+                        <button type="submit" class="btn btn-warning">Sửa</button>
+                    </form>
+                    <form action="delete-student.php" method="POST" style="display: inline-block">
+                        <input type="hidden" name="id" value="<?php echo $student->getId() ?>">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?')">
+                            Xóa
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        <?php } ?>
         </tbody>
     </table>
 </div>

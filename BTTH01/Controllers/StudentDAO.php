@@ -82,17 +82,22 @@ class StudentDAO
         $file_path = "C:/xampp/htdocs/CSE485_2023/BTTH01/data.txt";
         $file = fopen($file_path, 'r+');
         if ($file) {
+            $data = array();
             while (($line = fgets($file)) != false) {
-                $data = explode(',', $line);
-                if ($data[0] == $id) {
-                    fseek($file, -strlen($line), SEEK_CUR);
-                    ftruncate($file, ftell($file));
-                    break;
+                $line = trim($line);
+                $row = explode(',', $line);
+                if ($row[0] != $id) {
+                    $data[] = $line;
                 }
+            }
+            ftruncate($file, 0); // Xóa toàn bộ nội dung của file
+            rewind($file); // Đặt con trỏ file ở đầu file
+            foreach ($data as $line) {
+                fwrite($file, $line . PHP_EOL);
             }
             fclose($file);
         }
-
     }
+
 }
 

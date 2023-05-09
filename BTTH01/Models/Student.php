@@ -1,5 +1,8 @@
 <?php
-class Student{
+
+namespace Models;
+class Student
+{
     private $id;
     private $name;
     private $age;
@@ -56,7 +59,6 @@ class Student{
     {
         $this->age = $age;
     }
-
 
 
 }

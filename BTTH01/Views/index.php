@@ -2,8 +2,9 @@
 
 use Controllers\StudentDAO;
 
-include_once 'Student.php';
-include_once 'StudentDAO.php';
+include_once '../Models/Student.php';
+include_once '../Controllers/StudentDAO.php';
+
 $studentDAO = new StudentDAO();
 $students = $studentDAO->getAll();
 ?>

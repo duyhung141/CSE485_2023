@@ -1,5 +1,4 @@
 id,name,age
-1,John Smith,12
 2,Jane Doe,13
 3,Michael Johnson,11
 4,Emily Davis,12

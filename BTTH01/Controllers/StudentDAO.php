@@ -96,5 +96,3 @@ class StudentDAO
     }
 }
 
-$studentDAO = new StudentDAO();
-$studentDAO->read();

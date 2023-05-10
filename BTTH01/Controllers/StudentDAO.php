@@ -9,18 +9,22 @@ use Models\Student;
 
 class StudentDAO
 {
-    public function create(Request $request)
+    public function create(array $request)
     {
         $file_path = "C:/xampp/htdocs/CSE485_2023/BTTH01/data.txt";
         $file = fopen($file_path, 'a+');
 
-        $name = $request->name;
-        $age = $request->age;
+        $lines = file($file_path);
+        $last_line = $lines[count($lines) - 1];
+        $row = explode(",", $last_line);
 
-        $data = "10, " . $name . ", " . $age.'\n';
+        $id = $row[0] + 1;
+        $name = $request['name'];
+        $age = $request['age'];
+
+        $data = "$id,$name,$age\n";
         fwrite($file, $data);
         fclose($file);
-
     }
 
     public function read()

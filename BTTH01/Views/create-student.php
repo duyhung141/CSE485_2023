@@ -42,27 +42,26 @@ if(isset($_POST['btnAdd'])){
 <div class="wrapper" style="width: 600px; margin: 0 auto">
     <?php echo $message; ?>
     <div class="container-fluid"
-    <div
-    ="row">
-    <div class="col-md-12">
-        <h2 class="mt-5">Create Student</h2>
-        <p>Please fill this form and submit to add employee record to the database.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group" style="padding-bottom: 10px;">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name">
-            </div>
-            <div class="form-group" style="padding-bottom: 15px"
-            <label for="age" class="form-label">Age</label>
-            <input type="number" class="form-control" id="age" name="age">
-    </div>
+        <div clas ="row">
+            <div class="col-md-12">
+                <h2 class="mt-5">Create Student</h2>
+                <p>Please fill this form and submit to add employee record to the database.</p>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <div class="form-group" style="padding-bottom: 10px;">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                    <div class="form-group" style="padding-bottom: 15px"
+                        <label for="age" class="form-label">Age</label>
+                        <input type="number" class="form-control" id="age" name="age">
+                    </div>
 
-    <button type="submit" class="btn btn-primary" name="btnAdd">Submit</button>
-    <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
-    </form>
-</div>
-</div>
-</div>
+                    <button type="submit" class="btn btn-primary" name="btnAdd">Submit</button>
+                    <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

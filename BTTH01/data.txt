@@ -4,3 +4,4 @@ id,name,age
 4,Emily Davis,12
 5,James Rodriguez,14
 6,Duy Hưng,21
+7,Trần Thanh Thảo,11

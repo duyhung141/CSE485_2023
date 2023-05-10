@@ -1,34 +1,33 @@
 <?php
 
 use Controllers\StudentDAO;
+use Models\Student;
+
 include_once '../Models/Student.php';
 include_once '../Controllers/StudentDAO.php';
 
 $studentDAO = new StudentDAO();
+$data = new Student();
 $message = '';
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])) {
-    $id = $_POST["id"];
-    $data = $studentDAO->findById($id);
-    if (isset($_POST['btnEdit'])) {
-        $name = trim($_POST['name']);
-        $age = trim($_POST['age']);
 
-        // kiểm tra thông tin nhập vào có hợp lệ hay không
-        if (!empty($name) && !empty($age)) {
-            $data->setName($name);
-            $data->setAge($age);
-            $studentDAO->update($data);
-            $message = "<h2 style='color: red'>Successfully updated!</h2>";
-        } else {
-            $message = "<h2 style='color: red'>Please complete all information.</h2>";
-        }
-        header("Location: index.php");
-        exit;
-    }
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])) {
+    $data = $studentDAO->findById($_POST["id"]);
 }
 
+if (isset($_POST['btnEdit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = trim($_POST['name']);
+    $age = trim($_POST['age']);
+    // kiểm tra thông tin nhập vào có hợp lệ hay không
+    if (!empty($name) && !empty($age)) {
+        $data->setName($name);
+        $data->setAge($age);
+        $studentDAO->update($data);
+        $message = "<h2 style='color: red'>Successfully updated!</h2>";
 
-
+    } else {
+        $message = "<h2 style='color: red'>Please complete all information.</h2>";
+    }
+}
 ?>
 
 <!doctype html>
@@ -42,35 +41,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])) {
     <title>Create Student</title>
 </head>
 <body>
-<div class="container">
-    <div class="wrapper" style="width: 600px; margin: 0 auto">
-        <?php echo $message; ?>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="mt-5">Update Student</h2>
-                    <p>Please fill this form and submit to add employee record to the database.</p>
-                    <form method="post">
-                        <div class="form-group" style="padding-bottom: 10px;">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name"
-                                   value="<?php echo $data->getname() ?>">
-                        </div>
-                        <div class="form-group" style="padding-bottom: 15px">
-                            <label for="age" class="form-label">Age</label>
-                            <input type="number" class="form-control" id="age" name="age"
-                                   value="<?php echo number_format($data->getAge()); ?>">
+<?php include_once "Components/header.php"?>
 
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" name="btnEdit">Submit</button>
-                        <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
-                    </form>
-                </div>
-
+<div class="wrapper" style="width: 600px; margin: 0 auto">
+    <?php echo $message; ?>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mt-3">Update Student</h2>
+                <p>Please fill this form and submit to add employee record to the database.</p>
+                <form action="update-student.php" method="POST">
+                    <input type="hidden" name="id" value="<?php echo $data->getId(); ?>">
+                    <div class="form-group" style="padding-bottom: 10px;">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name"
+                               value="<?php echo $data->getName() ?>">
+                    </div>
+                    <div class="form-group" style="padding-bottom: 15px">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="text" class="form-control" id="age" name="age"
+                               value="<?php echo number_format($data->getAge()); ?>">
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="btnEdit">Submit</button>
+                    <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
+                </form>
             </div>
         </div>
     </div>
-
+</div>
 </body>
 </html>

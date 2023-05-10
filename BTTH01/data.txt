@@ -1,6 +1,9 @@
 id,name,age
+1,John Smith,12
 2,Jane Doe,13
 3,Michael Johnson,11
 4,Emily Davis,12
 5,James Rodriguez,14
-6,Duy Hưng,21
+6,Lê Duy Hưng,21
+7,Bùi Minh Hiếu,21
+8,Nguyễn Thanh Thảo,21

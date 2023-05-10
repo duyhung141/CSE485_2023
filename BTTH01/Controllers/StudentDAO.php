@@ -64,21 +64,28 @@ class StudentDAO
 
     public function update($request)
     {
-        $id = $request->id;
+        $id = $request->getId();
         $file_path = "C:/xampp/htdocs/CSE485_2023/BTTH01/data.txt";
         $file = fopen($file_path, 'r+');
         if (!$file) {
             die("Failed to open file!");
         }
+        $lines = [];
         while (($line = fgets($file)) != false) {
-            $data = explode(',', $line);
+            $lines[] = $line;
+        }
+
+        for ($i = 0; $i < count($lines); $i++) {
+            $data = explode(',', $lines[$i]);
             if ($data[0] == $id) {
-                $newData = $request->id . ',' . $request->name . ',' . $request->age;
-                fseek($file, -strlen($line), SEEK_CUR);
-                ftruncate($file, ftell($file));
-                fwrite($file, $newData);
+                $lines[$i] = $id . ',' . $request->getName() . ',' . $request->getAge() . "\n";
                 break;
             }
+        }
+
+        rewind($file);
+        foreach ($lines as $line) {
+            fwrite($file, $line);
         }
         fclose($file);
     }

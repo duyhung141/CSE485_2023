@@ -37,6 +37,8 @@ if(isset($_POST['btnAdd'])){
     <title>Create Student</title>
 </head>
 <body>
+<?php include_once "Components/header.php"?>
+
 <div class="container">
     <div class="wrapper" style="width: 600px; margin: 0 auto">
         <?php echo $message; ?>

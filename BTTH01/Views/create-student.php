@@ -4,13 +4,13 @@ $message = '';
     if(isset($_POST['btnAdd'])){
         $name = trim($_POST['Student-Name']);
         $age = trim($_POST['Student-Age']);
-
+        $id = 1;
         //check rong
         if(!empty($name) && !empty($age)){
             $file = 'C:/xampp/htdocs/CSE485_2023/BTTH01/data.txt';
             if(file_exists($file)){
                 $a = fopen($file, 'a');
-                fwrite($a, $name. ",". $age. "\n");
+                fwrite($a, $id. ",".$name. ",". $age. "\n");
                 fclose($a);
             }
             $message = "<h2 style='color: red'>Successfully added new!</h2>";

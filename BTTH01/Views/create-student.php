@@ -8,9 +8,6 @@ include_once '../Controllers/StudentDAO.php';
 $studentDAO = new StudentDAO();
 $message = '';
 
-$studentDAO = new StudentDAO();
-$message = '';
-
 if(isset($_POST['btnAdd'])){
     $name = trim($_POST['name']);
     $age = trim($_POST['age']);

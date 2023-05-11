@@ -3,6 +3,6 @@ id,name,age
 3,Michael Johnson,11
 4,Emily Davis,12
 5,James Rodriguez,14
-6,Duy Hưng,21
-7,Trần Thanh Thảo,11
-8,pass level2,1
+6,Lê Duy Hưng,21
+7,Bùi Minh Hiếu,21
+8,Nguyễn Thanh Thảo,21

@@ -20,14 +20,12 @@ $students = $studentDAO->getAll();
     <title>BTTH01</title>
 </head>
 <body>
+<?php include_once "Components/header.php"?>
+
 <div class="container">
-    <table class="table">
-        <thead>
-        <tr>
-            <form action="create-student.php" method="POST" style="display: inline-block">
-                <button type="submit" class="btn btn-info">Thêm mới</button>
-            </form>
-        </tr>
+    <h1 class="display-6 fw-semibold mb-3">List Student</h1>
+    <table class="table table-striped align-middle mb-0 bg-white">
+        <thead class="bg-light">
         <tr>
             <th>#</th>
             <th>Name</th>
@@ -46,12 +44,12 @@ $students = $studentDAO->getAll();
                 <td>
                     <form action="update-student.php" method="POST" style="display: inline-block">
                         <input type="hidden" name="id" value="<?php echo $student->getId() ?>">
-                        <button type="submit" class="btn btn-warning">Sửa</button>
+                        <button type="submit" class="btn btn-warning">Edit</button>
                     </form>
                     <form action="delete-student.php" method="POST" style="display: inline-block">
                         <input type="hidden" name="id" value="<?php echo $student->getId() ?>">
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?')">
-                            Xóa
+                            Delete
                         </button>
                     </form>
                 </td>
@@ -60,5 +58,7 @@ $students = $studentDAO->getAll();
         </tbody>
     </table>
 </div>
+
+
 </body>
 </html>

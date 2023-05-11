@@ -62,24 +62,34 @@ class StudentDAO
         fclose($file);
     }
 
-    public function update(Request $request, $id)
+    public function update($request)
     {
+        $id = $request->getId();
         $file_path = "C:/xampp/htdocs/CSE485_2023/BTTH01/data.txt";
         $file = fopen($file_path, 'r+');
-        if ($file) {
-            while (($line = fgets($file)) != false) {
-                $data = explode(',', $line);
-                if ($data[0] == $id) {
-                    $newData = $id . ', ' . $data[1] . ', ' . $data[2];
-                    fseek($file, -strlen($line), SEEK_CUR);
-                    fwrite($file, $newData);
-                    break;
-                }
-            }
-            fclose($file);
+        if (!$file) {
+            die("Failed to open file!");
+        }
+        $lines = [];
+        while (($line = fgets($file)) != false) {
+            $lines[] = $line;
         }
 
+        for ($i = 0; $i < count($lines); $i++) {
+            $data = explode(',', $lines[$i]);
+            if ($data[0] == $id) {
+                $lines[$i] = $id . ',' . $request->getName() . ',' . $request->getAge() . "\n";
+                break;
+            }
+        }
+
+        rewind($file);
+        foreach ($lines as $line) {
+            fwrite($file, $line);
+        }
+        fclose($file);
     }
+
 
     public function delete($id)
     {
@@ -100,6 +110,17 @@ class StudentDAO
                 fwrite($file, $line . PHP_EOL);
             }
             fclose($file);
+        }
+    }
+
+    public function findById($id)
+    {
+        $students = $this->getAll();
+        foreach ($students as $student) {
+            if ($student->getId() == $id) {
+                return $student;
+                break;
+            }
         }
     }
 

@@ -22,7 +22,7 @@ if (isset($_POST['btnEdit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
         $data->setName($name);
         $data->setAge($age);
         $studentDAO->update($data);
-        $message = "<h2 style='color: red'>Successfully updated!</h2>";
+//        $message = "<h2 style='color: red'>Successfully updated!</h2>";
 
     } else {
         $message = "<h2 style='color: red'>Please complete all information.</h2>";
@@ -62,7 +62,7 @@ if (isset($_POST['btnEdit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="text" class="form-control" id="age" name="age"
                                value="<?php echo number_format($data->getAge()); ?>">
                     </div>
-                    <button type="submit" class="btn btn-primary" name="btnEdit">Submit</button>
+                    <button type="submit" class="btn btn-primary" name="btnEdit" onclick="return alert('Successfully update!')">Submit</button>
                     <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
                 </form>
             </div>

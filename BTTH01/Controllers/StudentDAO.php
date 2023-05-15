@@ -74,11 +74,10 @@ class StudentDAO
         while (($line = fgets($file)) != false) {
             $lines[] = $line;
         }
-
         for ($i = 0; $i < count($lines); $i++) {
             $data = explode(',', $lines[$i]);
             if ($data[0] == $id) {
-                $lines[$i] = $id . ',' . $request->getName() . ',' . $request->getAge() ;
+                $lines[$i] = $id . ',' . $request->getName() . ',' . $request->getAge() . "\n";
                 break;
             }
         }

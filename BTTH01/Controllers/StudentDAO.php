@@ -78,7 +78,7 @@ class StudentDAO
         for ($i = 0; $i < count($lines); $i++) {
             $data = explode(',', $lines[$i]);
             if ($data[0] == $id) {
-                $lines[$i] = $id . ',' . $request->getName() . ',' . $request->getAge() . "\n";
+                $lines[$i] = $id . ',' . $request->getName() . ',' . $request->getAge() ;
                 break;
             }
         }

@@ -18,6 +18,7 @@ course_id: khóa ngoại liên kết với bảng Course
 lecture_id: khóa ngoại liên kết với bảng Lectures
 date_start: ngày bắt đầu lớp học
 date_end: ngày kết thúc lớp học
+semester: học kỳ
 
 4. Course:
 id: khóa chính

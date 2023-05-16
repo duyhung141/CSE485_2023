@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])) {
     // Chuyển hướng về trang hiển thị danh sách các bản ghi
     header("Location: index.php");
     exit;
+
 }
 
 

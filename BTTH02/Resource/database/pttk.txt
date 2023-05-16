@@ -1,0 +1,53 @@
+1. Students:
+
+id: khóa chính
+name: tên sinh viên
+birth: ngày sinh
+contact: thông tin liên hệ
+user_id: khóa ngoại liên kết với bảng Users
+
+2. Lectures:
+id: khóa chính
+name: tên giảng viên
+contact: thông tin liên hệ
+user_id: khóa ngoại liên kết với bảng Users
+
+3. Classes:
+id: khóa chính
+course_id: khóa ngoại liên kết với bảng Course
+lecture_id: khóa ngoại liên kết với bảng Lectures
+date_start: ngày bắt đầu lớp học
+date_end: ngày kết thúc lớp học
+
+4. Course:
+id: khóa chính
+name: tên khóa học
+description: mô tả khóa học
+
+5. Users:
+id: khóa chính
+email: địa chỉ email
+password: mật khẩu
+role: vai trò người dùng
+
+6. Attendance:
+id: khóa chính
+class_id: khóa ngoại liên kết với bảng Classes
+student_id: khóa ngoại liên kết với bảng Students
+is_absent: trạng thái vắng mặt (có thể sử dụng kiểu dữ liệu boolean)
+
+7. student_classes:
+id: khóa chính
+student_id: khóa ngoại liên kết với bảng Students
+class_id: khóa ngoại liên kết với bảng Classes
+
+8. lecture_classes:
+id: khóa chính
+lecture_id: khóa ngoại liên kết với bảng Lectures
+class_id: khóa ngoại liên kết với bảng Classes
+
+Các quan hệ:
+Mỗi sinh viên thuộc nhiều lớp (quan hệ Nhiều - Nhiều giữa bảng Students và bảng Classes thông qua bảng student_classes).
+Mỗi giảng viên dạy nhiều lớp (quan hệ Nhiều - Nhiều giữa bảng Lectures và bảng Classes thông qua bảng lecture_classes).
+Mỗi lớp thuộc một khóa học (quan hệ Một - Nhiều giữa bảng Course và bảng Classes).
+Mỗi lớp có nhiều sinh viên (quan hệ Nhiều - Nhiều giữa bảng Classes và bảng Students thông qua bảng student_classes).

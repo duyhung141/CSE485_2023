@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id"])) {
     $studentDAO->delete($id);
 
     // Chuyển hướng về trang hiển thị danh sách các bản ghi
-    header("Location: index.php");
+    header("Location: dashboard.php");
     exit;
 
 }

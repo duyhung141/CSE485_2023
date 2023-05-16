@@ -36,6 +36,7 @@ id: khóa chính
 class_id: khóa ngoại liên kết với bảng Classes
 student_id: khóa ngoại liên kết với bảng Students
 is_absent: trạng thái vắng mặt (có thể sử dụng kiểu dữ liệu boolean)
+date: ngày điểm danh
 
 7. student_classes:
 id: khóa chính

@@ -9,9 +9,9 @@ class Student
 
     private $birth;
 
-    private $email;
-
     private $contact;
+
+    private $user_id;
 
     public function __construct()
     {
@@ -69,17 +69,17 @@ class Student
     /**
      * @return mixed
      */
-    public function getEmail()
+    public function getUserId()
     {
-        return $this->email;
+        return $this->$user_id;
     }
 
     /**
-     * @param mixed $email
+     * @param mixed $user_id
      */
-    public function setEmail($email)
+    public function setEmail($user_id)
     {
-        $this->email = $email;
+        $this->user_id = $user_id;
     }
 
     /**

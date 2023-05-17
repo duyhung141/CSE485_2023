@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 16, 2023 lúc 05:45 PM
--- Phiên bản máy phục vụ: 10.4.27-MariaDB
--- Phiên bản PHP: 8.0.25
+-- Thời gian đã tạo: Th5 17, 2023 lúc 03:49 AM
+-- Phiên bản máy phục vụ: 10.4.25-MariaDB
+-- Phiên bản PHP: 8.0.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `cse485`
 --
-CREATE DATABASE IF NOT EXISTS `cse485` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `cse485`;
 
 -- --------------------------------------------------------
 
@@ -35,7 +33,17 @@ CREATE TABLE `attendance` (
   `student_id` int(11) NOT NULL,
   `is_absent` tinyint(1) NOT NULL DEFAULT 0,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `attendance`
+--
+
+INSERT INTO `attendance` (`id`, `course_id`, `student_id`, `is_absent`, `date`) VALUES
+(1, 1, 1, 0, '2023-05-16'),
+(2, 1, 2, 0, '2023-05-16'),
+(3, 1, 3, 0, '2023-05-16'),
+(4, 1, 4, 0, '2023-05-16');
 
 -- --------------------------------------------------------
 
@@ -46,11 +54,17 @@ CREATE TABLE `attendance` (
 CREATE TABLE `classes` (
   `id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
-  `lecture_id` int(11) NOT NULL,
   `date_start` date NOT NULL,
   `date_end` date NOT NULL,
   `semester` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `classes`
+--
+
+INSERT INTO `classes` (`id`, `course_id`, `date_start`, `date_end`, `semester`) VALUES
+(1, 1, '2023-04-17', '2023-06-18', 2);
 
 -- --------------------------------------------------------
 
@@ -62,7 +76,14 @@ CREATE TABLE `courses` (
   `id` int(11) NOT NULL,
   `name` varchar(300) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `courses`
+--
+
+INSERT INTO `courses` (`id`, `name`, `description`) VALUES
+(1, 'Công nghệ Web', 'Môn học gây lú cực mạnh');
 
 -- --------------------------------------------------------
 
@@ -72,10 +93,17 @@ CREATE TABLE `courses` (
 
 CREATE TABLE `lecturers` (
   `id` int(11) NOT NULL,
-  `name` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `contact` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `name` varchar(100) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `contact` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `lecturers`
+--
+
+INSERT INTO `lecturers` (`id`, `name`, `user_id`, `contact`) VALUES
+(0, 'Kiều Tuấn Dũng', 1, '0123456789');
 
 -- --------------------------------------------------------
 
@@ -87,7 +115,14 @@ CREATE TABLE `lecture_classes` (
   `id` int(16) NOT NULL,
   `lecture_id` int(16) NOT NULL,
   `class_id` int(16) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `lecture_classes`
+--
+
+INSERT INTO `lecture_classes` (`id`, `lecture_id`, `class_id`) VALUES
+(0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -100,8 +135,18 @@ CREATE TABLE `students` (
   `name` varchar(100) NOT NULL,
   `birth` date NOT NULL,
   `contact` varchar(100) NOT NULL,
-  `user_id` int(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `user_id` int(12) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `students`
+--
+
+INSERT INTO `students` (`id`, `name`, `birth`, `contact`, `user_id`) VALUES
+(1, 'Lê Duy Hưng', '2023-05-01', '0123456789', 2),
+(2, 'Trần Thanh Thảo', '2023-05-02', '0123456789', 3),
+(3, 'Bùi Minh Hiếu', '2023-05-03', '0123456789', 4),
+(4, 'Dỗ Quốc Hưng', '2023-05-04', '0123456789', 5);
 
 -- --------------------------------------------------------
 
@@ -113,7 +158,17 @@ CREATE TABLE `student_classes` (
   `id` int(11) NOT NULL,
   `class_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `student_classes`
+--
+
+INSERT INTO `student_classes` (`id`, `class_id`, `student_id`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -126,7 +181,18 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `role` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `role`) VALUES
+(1, 'ktz@e.tlu.edu.vn', 'ktz', 2),
+(2, 'leduyhung@e.tlu.edu.vn', 'leduyhung', 3),
+(3, 'tranthanhthao@e.tlu.edu.vn', 'tranthanhthao', 3),
+(4, 'buiminhhieu@e.tlu.edu.vn', 'buiminhhieu', 3),
+(5, 'doquochung@e.tlu.edu.vn', 'doquochung', 3);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -136,13 +202,16 @@ CREATE TABLE `users` (
 -- Chỉ mục cho bảng `attendance`
 --
 ALTER TABLE `attendance`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_attendance_courses` (`course_id`),
+  ADD KEY `fk_attendance_student` (`student_id`);
 
 --
 -- Chỉ mục cho bảng `classes`
 --
 ALTER TABLE `classes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_classes_courses` (`course_id`);
 
 --
 -- Chỉ mục cho bảng `courses`
@@ -154,25 +223,31 @@ ALTER TABLE `courses`
 -- Chỉ mục cho bảng `lecturers`
 --
 ALTER TABLE `lecturers`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Chỉ mục cho bảng `lecture_classes`
 --
 ALTER TABLE `lecture_classes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `lecture_id` (`lecture_id`),
+  ADD KEY `class_id` (`class_id`);
 
 --
 -- Chỉ mục cho bảng `students`
 --
 ALTER TABLE `students`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Chỉ mục cho bảng `student_classes`
 --
 ALTER TABLE `student_classes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_classes_ibfk_1` (`class_id`),
+  ADD KEY `student_classes_ibfk_2` (`student_id`);
 
 --
 -- Chỉ mục cho bảng `users`
@@ -188,37 +263,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `student_classes`
 --
 ALTER TABLE `student_classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -235,8 +310,26 @@ ALTER TABLE `attendance`
 -- Các ràng buộc cho bảng `classes`
 --
 ALTER TABLE `classes`
-  ADD CONSTRAINT `fk_classes_courses` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`),
-  ADD CONSTRAINT `fk_classes_lecturers` FOREIGN KEY (`lecture_id`) REFERENCES `lecturers` (`id`);
+  ADD CONSTRAINT `fk_classes_courses` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`);
+
+--
+-- Các ràng buộc cho bảng `lecturers`
+--
+ALTER TABLE `lecturers`
+  ADD CONSTRAINT `lecturers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Các ràng buộc cho bảng `lecture_classes`
+--
+ALTER TABLE `lecture_classes`
+  ADD CONSTRAINT `lecture_classes_ibfk_1` FOREIGN KEY (`lecture_id`) REFERENCES `lecturers` (`id`),
+  ADD CONSTRAINT `lecture_classes_ibfk_2` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`);
+
+--
+-- Các ràng buộc cho bảng `students`
+--
+ALTER TABLE `students`
+  ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Các ràng buộc cho bảng `student_classes`

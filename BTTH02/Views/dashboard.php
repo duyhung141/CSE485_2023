@@ -1,4 +1,7 @@
 <?php
+include_once '../Controllers/attendanceController.php';
+$attendanceController = new AttendanceController();
+
 ?>
 
 <!doctype html>
@@ -24,32 +27,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
 <script>
     $(document).ready(function () {
+        var data = <?php echo json_encode($attendanceController->getAttendance(1)); ?>;
+        console.log(data);
         function checkAttendance(date) {
-            // Chuyển đổi ngày sang định dạng cần so sánh
-            var targetDate = moment(date).format('YYYY/MM/DD');
+            var targetDate = moment(date).format('YYYY-MM-DD');
 
-            // Kiểm tra nếu ngày là 16/05/2023 thì trả về true
-            if (targetDate === '2023/05/16') {
-                return true;
+            // Duyệt qua từng phần tử trong mảng data
+            for (var i = 0; i < data.length; i++) {
+                var attendanceDate = moment(data[i].date).format('YYYY-MM-DD');
+
+                // So sánh ngày hiện tại với ngày trong mảng
+                if (targetDate === attendanceDate) {
+                    return true;
+                }
             }
 
-            // Ngược lại, trả về false
             return false;
         }
+
         $('#calendar').fullCalendar({
-            // Cấu hình và tùy chọn cho lịch
             dayRender: function (date, cell) {
-                // Kiểm tra trạng thái đã điểm danh
                 var isAttendance = checkAttendance(date);
 
-                // Nếu đã điểm danh, thay đổi nội dung trong ô ngày
                 if (isAttendance) {
                     cell.html('<div class="attendance"><span class="text-danger fw-bold">Đã điểm danh</span></div>');
                 }
             }
         });
-
-
     });
 </script>
 </body>

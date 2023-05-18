@@ -9,7 +9,7 @@ class AttendanceController{
 
         $pdo = new ConnectDatabase();
         $conn = $pdo->getConnection();
-        $sql = "SELECT * FROM attendance WHERE id=?";
+        $sql = "SELECT date FROM attendance WHERE student_id=? and is_absent=0";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$id]);
         $data=$stmt->fetchAll(PDO::FETCH_ASSOC);

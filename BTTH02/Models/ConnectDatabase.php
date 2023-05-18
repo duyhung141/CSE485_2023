@@ -1,8 +1,4 @@
 <?php
-
-
-use Models\Student;
-
 class ConnectDatabase
 {
     private $host = 'localhost';
@@ -13,7 +9,7 @@ class ConnectDatabase
     public function __construct()
     {
         try {
-            $conn = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username, $this->password);
+            $this->conn = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username, $this->password);
         } catch (Exception $e) {
             die("Could not connect to the database $this->dbname :" . $e->getMessage());
         }

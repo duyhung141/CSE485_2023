@@ -1,5 +1,4 @@
 1. Students:
-
 id: khóa chính
 name: tên sinh viên
 birth: ngày sinh

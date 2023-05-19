@@ -16,23 +16,24 @@ $data = $courseController->getAll();
 <body>
 <?php include_once "Components/header.php"; ?>
 <div class="container">
+    <h1 class="text-center m-3">Các môn học có sẵn</h1>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
         <?php
         foreach ($data as $course) {
             ?>
             <div class="col">
                 <div class="card shadow-sm">
-                    <a href="">
+                    <a class="text-decoration-none" href="">
                         <img class="bd-placeholder-img card-img-top" width="100%" height="225"
                              src="../Resource/img/course.jpg"
                         </img>
+                        <div class="card-body">
+                            <h3><?php echo $course['name'] ?></h3>
+                            <p class="text-dark"><?php echo $course['description'] ?></p>
+                        </div>
                     </a>
-                    <div class="card-body">
-                        <h3><?php echo $course['name'] ?></h3>
-                        <p><?php echo $course['description'] ?></p>
-                    </div>
+
                 </div>
             </div>
         <?php } ?>

@@ -1,72 +1,7 @@
 <?php
-if(isset($_POST['btnLogin'])){
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    try {
-        $conn = new PDO("mysql:host=localhost; dbname=cse485", 'root', '');
-
-        if(empty($email) || empty($password)){
-            echo "<script>alert('Please enter your email and pasword');</script>";
-            exit();
-        }
-        $sql = "SELECT * FROM users WHERE email = ? AND password = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$email, $password]);
-
-        if ($stmt->rowCount()==1){
-            $user = $stmt->fetch();
-            header("location:dashboard.php");
-        }
-    } catch(Exception $e){
-        echo 'Error: '.$e->getMessage();
-    }
-}
-
-
-
-//include_once '../Models/ConnectDatabase.php';
-//function login($email,$password)
-//{
-//    private
-//    $host = 'localhost';
-//    private
-//    $dbname = 'cse485';
-//    private
-//    $username = 'root';
-//    private
-//    $password = '';
-//    try {
-//        $pdo = new ConnectDatabase();
-//        $conn = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username, $this->password); // Gọi phương thức getConnection() để nhận kết nối PDO
-//
-//        $sql = "SELECT * FROM users WHERE email = ? AND password = ?";
-//        $stmt = $conn->prepare($sql);
-//        $stmt->execute([$email, $password]);
-//        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//        echo "Số bản ghi: " . $stmt->rowCount();
-//        return $data;
-//
-//    } catch (PDOException $e) {
-//        // Xử lý ngoại lệ khi có lỗi xảy ra
-//        echo "Lỗi: " . $e->getMessage();
-//    }
-//}
-//if(isset($_GET['btnLogin'])) {
-//    $email = $_GET['email'];
-//    $password = $_GET['password'];
-//
-//    // Kiểm tra đã nhập đủ tên đăng nhập và mật khẩu chưa
-//    if (empty($email) || empty($password)) {
-//        echo "<script>alert('Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu');</script>";
-//        exit();
-//    }
-//    $data=login($email, $password);
-//    echo "<script>console.log($data);</script>";
-//
-//}
-
-
+include_once '../Controllers/loginController.php';
+$loginController = new LoginController();
+$loginController->login();
 ?>
 
 <!doctype html>

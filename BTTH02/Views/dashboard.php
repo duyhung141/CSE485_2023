@@ -1,7 +1,13 @@
 <?php
 include_once '../Controllers/attendanceController.php';
 $attendanceController = new AttendanceController();
-
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location:login.php');
+}
+else{
+    $id=$_SESSION['user_id'];
+}
 ?>
 
 <!doctype html>
@@ -27,7 +33,7 @@ $attendanceController = new AttendanceController();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
 <script>
     $(document).ready(function () {
-        var data = <?php echo json_encode($attendanceController->getAttendance(1)); ?>;
+        var data = <?php echo json_encode($attendanceController->getAttendance($id)); ?>;
         console.log(data);
         function checkAttendance(date) {
             var targetDate = moment(date).format('YYYY-MM-DD');
@@ -36,7 +42,7 @@ $attendanceController = new AttendanceController();
             for (var i = 0; i < data.length; i++) {
                 var attendanceDate = moment(data[i].date).format('YYYY-MM-DD');
 
-                // So sánh ngày hiện tại với ngày trong mảng
+                // So sánh ngày hiện tại với ngày trong mảngS
                 if (targetDate === attendanceDate) {
                     return true;
                 }

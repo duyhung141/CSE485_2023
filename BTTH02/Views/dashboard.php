@@ -23,7 +23,7 @@ else{
     <title>Dashboard</title>
 </head>
 <body>
-<?php include_once 'Components/header.php'; ?>
+<?php //include_once 'Components/header.php'; ?>
 <div class="container">
     <div id="calendar"></div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 17, 2023 lúc 03:49 AM
+-- Thời gian đã tạo: Th5 19, 2023 lúc 07:18 AM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.0.23
 
@@ -43,7 +43,8 @@ INSERT INTO `attendance` (`id`, `course_id`, `student_id`, `is_absent`, `date`) 
 (1, 1, 1, 0, '2023-05-16'),
 (2, 1, 2, 0, '2023-05-16'),
 (3, 1, 3, 0, '2023-05-16'),
-(4, 1, 4, 0, '2023-05-16');
+(4, 1, 4, 0, '2023-05-16'),
+(5, 1, 1, 0, '2023-05-18');
 
 -- --------------------------------------------------------
 
@@ -173,6 +174,18 @@ INSERT INTO `student_classes` (`id`, `class_id`, `student_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `student_courses`
+--
+
+CREATE TABLE `student_courses` (
+  `id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `users`
 --
 
@@ -250,6 +263,14 @@ ALTER TABLE `student_classes`
   ADD KEY `student_classes_ibfk_2` (`student_id`);
 
 --
+-- Chỉ mục cho bảng `student_courses`
+--
+ALTER TABLE `student_courses`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `course_id` (`course_id`),
+  ADD KEY `student_id` (`student_id`);
+
+--
 -- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
@@ -263,7 +284,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `classes`
@@ -288,6 +309,12 @@ ALTER TABLE `students`
 --
 ALTER TABLE `student_classes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT cho bảng `student_courses`
+--
+ALTER TABLE `student_courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
@@ -337,6 +364,13 @@ ALTER TABLE `students`
 ALTER TABLE `student_classes`
   ADD CONSTRAINT `student_classes_ibfk_1` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`),
   ADD CONSTRAINT `student_classes_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`);
+
+--
+-- Các ràng buộc cho bảng `student_courses`
+--
+ALTER TABLE `student_courses`
+  ADD CONSTRAINT `student_courses_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`),
+  ADD CONSTRAINT `student_courses_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

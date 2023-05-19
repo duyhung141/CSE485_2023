@@ -13,7 +13,6 @@ class StudentController
         return $data;
     }
 
-
     public function createStudent($data)
     {
         $pdo = new ConnectDatabase();
@@ -42,6 +41,17 @@ class StudentController
         $stmt->execute([$id]);
         $data=$stmt->fetchAll(PDO::FETCH_ASSOC);
         return $data;
+    }
+
+    public function getStudentIdbyIdUser($id)
+    {
+        $pdo = new ConnectDatabase();
+        $conn = $pdo->getConnection();
+        $sql = "SELECT id FROM students WHERE user_id=?";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute([$id]);
+        $data=$stmt->fetch(PDO::FETCH_ASSOC); // Sử dụng fetch() thay vì fetchAll()
+        return $data['id']; // Trả về giá trị id
     }
 }
 

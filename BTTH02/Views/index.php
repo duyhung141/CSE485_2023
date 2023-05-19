@@ -1,3 +1,8 @@
+<?php
+include_once '../Controllers/courseController.php';
+$courseController = new CourseController();
+$data = $courseController->getAll();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,49 +14,28 @@
     <title>Document</title>
 </head>
 <body>
-<?php include_once "Components/header.php";?>
+<?php include_once "Components/header.php"; ?>
 <div class="container">
-    <h1 class="text-center m-4">Các khóa học có sẵn</h1>
+
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-            <div class="card shadow-sm">
-                <a href="">
-                    <img class="bd-placeholder-img card-img-top" width="100%" height="225"
-                         src="../Resource/img/course.jpg"
-                    </img>
-                </a>
-                <div class="card-body">
-                    <h3 class="card-text">Tên khóa học</h3>
-                    <p>Mô tả khóa học</p>
+
+        <?php
+        foreach ($data as $course) {
+            ?>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <a href="">
+                        <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                             src="../Resource/img/course.jpg"
+                        </img>
+                    </a>
+                    <div class="card-body">
+                        <h3><?php echo $course['name'] ?></h3>
+                        <p><?php echo $course['description'] ?></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="card shadow-sm">
-                <a href="">
-                    <img class="bd-placeholder-img card-img-top" width="100%" height="225"
-                         src="../Resource/img/course.jpg"
-                    </img>
-                </a>
-                <div class="card-body">
-                    <h3 class="card-text">Tên khóa học</h3>
-                    <p>Mô tả khóa học</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card shadow-sm">
-                <a href="">
-                    <img class="bd-placeholder-img card-img-top" width="100%" height="225"
-                         src="../Resource/img/course.jpg"
-                    </img>
-                </a>
-                <div class="card-body">
-                    <h3 class="card-text">Tên khóa học</h3>
-                    <p>Mô tả khóa học</p>
-                </div>
-            </div>
-        </div>
+        <?php } ?>
     </div>
 </div>
 </body>

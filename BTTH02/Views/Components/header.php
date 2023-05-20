@@ -9,8 +9,11 @@
             <a href="login.php" type="submit" class="btn text-light fw-bold">Login</a>
         <?php }
             else{
-            ?>
-                <a href="" type="submit" class="btn text-light fw-bold">Logout</a>
+                unset($_SESSION['user_id']);
+                unset($_SESSION['user_email']);
+                session_destroy();
+                ?>
+                <a href="index.php" type="submit" class="btn text-light fw-bold" onclick="return confirm('Do you want to sign out?')">Logout</a>
             <?php }?>
 
     </ul>

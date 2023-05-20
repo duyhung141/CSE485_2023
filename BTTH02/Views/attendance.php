@@ -78,14 +78,20 @@
                                 <div class="card-body">
                                     <table>
                                     <tr>
-                                        <td>
+                                        <td style="padding: 0; text-align: left;">
                                             <img src="path/to/logo.png" alt="" width="50" height="50">
                                         </td>
-                                        <td>
-                                            <p>ATTENDANCE</p>
+                                        <td style="padding: 0; text-align: left;">
+                                            <p style="margin: 0;">ATTENDANCE</p>
                                             <a href="">Khu vực điểm danh(Làm quen)</a>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td style="background-color: #f2f2f2;border-radius: 5px;padding: 0; text-align: left;">
+                                            <p style="margin: 0;">· Sinh viên chỉ sử dụng duy nhất 1 thiết bị để đăng nhập > Nếu sai tự chịu trách nhiệm kết quả điểm danh</p>
+                                            <p style="margin: 0;">· Không sử dụng VPN :D</p>
+                                        </td>
+                                    </tr>
                                     </table>
                                 </div>
                             </div>
@@ -94,13 +100,20 @@
                             <div class="card text-center">
                                 <div class="card-body">
                                 <table>
+                                <tr>
+                                    <td style="padding: 0; text-align: left;">
+                                        <img src="path/to/logo.png" alt="" width="50" height="50">
+                                    </td>
+                                    <td style="padding: 0; text-align: left;">
+                                        <p style="margin: 0;">ATTENDANCE</p>
+                                        <a href="">Khu vực điểm danh 62TH2.1</a>
+                                    </td>
+                                </tr>
                                     <tr>
-                                        <td>
-                                            <img src="path/to/logo.png" alt="" width="50" height="50">
-                                        </td>
-                                        <td>
-                                            <p>ATTENDANCE</p>
-                                            <a href="">Khu vực điểm danh 62TH2.1</a>
+                                        <td style="background-color: #f2f2f2;border-radius: 5px;padding: 0; text-align: left;">
+                                            <p style="margin: 0;">· Chỉ dành cho SV có username bắt đầu bằng kí tự "b" </p>
+                                            <p style="margin: 0;">· Sinh viên chỉ sử dụng duy nhất 1 thiết bị để đăng nhập > Nếu sai tự chịu trách nhiệm kết quả điểm danh</p>
+                                            <p style="margin: 0;">· Không sử dụng VPN :D</p>
                                         </td>
                                     </tr>
                                     </table>
@@ -112,12 +125,19 @@
                                 <div class="card-body">
                                 <table>
                                     <tr>
-                                        <td>
+                                        <td style="padding: 0; text-align: left;">
                                             <img src="path/to/logo.png" alt="" width="50" height="50">
                                         </td>
-                                        <td>
-                                            <p>ATTENDANCE</p>
+                                        <td style="padding: 0; text-align: left;">
+                                            <p style="margin: 0;">ATTENDANCE</p>
                                             <a href="">Khu vực điểm danh 62TH2.2</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="background-color: #f2f2f2;border-radius: 5px;padding: 0; text-align: left;" >
+                                            <p style="margin: 0;">· Chỉ dành cho SV có username bắt đầu bằng kí tự "b" </p>
+                                            <p style="margin: 0;">· Sinh viên chỉ sử dụng duy nhất 1 thiết bị để đăng nhập > Nếu sai tự chịu trách nhiệm kết quả điểm danh</p>
+                                            <p style="margin: 0;">· Không sử dụng VPN :D</p>
                                         </td>
                                     </tr>
                                     </table>

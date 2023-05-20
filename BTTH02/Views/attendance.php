@@ -102,7 +102,7 @@
                                 <table>
                                 <tr>
                                     <td style="padding: 0; text-align: left;">
-                                        <img src="path/to/logo.png" alt="" width="50" height="50">
+                                        <img src="/BTTH02/Resource//img/person.png" alt="" width="50" height="50">
                                     </td>
                                     <td style="padding: 0; text-align: left;">
                                         <p style="margin: 0;">ATTENDANCE</p>

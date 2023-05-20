@@ -1,5 +1,5 @@
 <?php
-
+$id = $_GET['id'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -47,5 +47,6 @@
         </a>
     </div>
 </div>
+<script !src="">console.log('hello',<?php $id?>)</script>
 </body>
 </html>

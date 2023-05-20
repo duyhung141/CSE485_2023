@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
-    <div style="font-family:Roboto;background-color:gainsboro">
+    <div style="font-family:Roboto;background-color:gainsboro;height: 1000px">
         <div >
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
@@ -67,16 +67,65 @@
                 </div>
             </nav>
         </div>
-        <div style="width: 80%; margin: 0 auto">
+        <div style="width: 80%;height: 90%; margin: 0 auto">
         <!-- Nội dung phần tử -->
             <h1 style="font-size: 1.875rem"><b>CSE485.Công nghệ Web (4/2023)</b></h1>
-            <div style="width: 100%; height: 200px; background-color: white; border-radius: 10px;">
-            <select onchange="location = this.value;">
-            <option value="">General</option>
-                <option value="">Khu vực điểm danh (Làm quen) </option>
-                <option value="">Khu vực điểm danh 62TH2.1 </option>
-                <option value="">Khu vực điểm danh 62TH2.2 </option>
-            </select>
+            <div style="width: 100%; height: 95%; background-color: white; border-radius: 10px;">
+                <div class="container">
+                    <div class="row flex-column justify-content-center">
+                        <div style="width: 98%" class="col-4 my-2 mx-auto">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <table>
+                                    <tr>
+                                        <td>
+                                            <img src="path/to/logo.png" alt="" width="50" height="50">
+                                        </td>
+                                        <td>
+                                            <p>ATTENDANCE</p>
+                                            <a href="">Khu vực điểm danh(Làm quen)</a>
+                                        </td>
+                                    </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 98%" class="col-4 my-2 mx-auto">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <img src="path/to/logo.png" alt="" width="50" height="50">
+                                        </td>
+                                        <td>
+                                            <p>ATTENDANCE</p>
+                                            <a href="">Khu vực điểm danh 62TH2.1</a>
+                                        </td>
+                                    </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 98%" class="col-4 my-2 mx-auto">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <img src="path/to/logo.png" alt="" width="50" height="50">
+                                        </td>
+                                        <td>
+                                            <p>ATTENDANCE</p>
+                                            <a href="">Khu vực điểm danh 62TH2.2</a>
+                                        </td>
+                                    </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@
                 unset($_SESSION['user_email']);
                 session_destroy();
                 ?>
-                <a href="index.php" type="submit" class="btn text-light fw-bold" onclick="return confirm('Do you want to sign out?')">Logout</a>
+                <a href="" type="submit" class="btn text-light fw-bold" onclick="return confirm('Do you want to sign out?')">Logout</a>
             <?php }?>
 
     </ul>

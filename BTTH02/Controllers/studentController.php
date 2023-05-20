@@ -53,6 +53,17 @@ class StudentController
         $data=$stmt->fetch(PDO::FETCH_ASSOC); // Sử dụng fetch() thay vì fetchAll()
         return $data['id']; // Trả về giá trị id
     }
+
+    public function getName($id)
+    {
+        $pdo = new ConnectDatabase();
+        $conn = $pdo->getConnection();
+        $sql = "SELECT name FROM students WHERE user_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$id]);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
 }
 
 ?>

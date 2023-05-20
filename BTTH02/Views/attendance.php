@@ -8,8 +8,7 @@ $id = -1;
 if (!isset($_GET['id'])) {
     header('Location:error.php');
 
-}
-else {
+} else {
     $id = $_GET['id'];
 }
 
@@ -26,8 +25,8 @@ $classes = $classController->getAll($id);
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>attendance</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
@@ -37,8 +36,6 @@ $classes = $classController->getAll($id);
         <div class="list-group w-75">
             <?php foreach ($classes as $class) { ?>
                 <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3">
-                    <!--                <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32"-->
-                    <!--                     class="rounded-circle flex-shrink-0">-->
                     <div class="d-flex gap-2 w-100 justify-content-between">
                         <div>
                             <p class="mb-0 opacity-75">ATTENDANCE</p>
@@ -47,10 +44,19 @@ $classes = $classController->getAll($id);
                     </div>
                 </a>
             <?php } ?>
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>

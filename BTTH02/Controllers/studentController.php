@@ -1,5 +1,6 @@
 <?php
 include_once '../Models/ConnectDatabase.php';
+include_once '../Controllers/classController.php';
 class StudentController
 {
     public function getAll()
@@ -52,6 +53,19 @@ class StudentController
         $stmt->execute([$id]);
         $data=$stmt->fetch(PDO::FETCH_ASSOC); // Sử dụng fetch() thay vì fetchAll()
         return $data['id']; // Trả về giá trị id
+    }
+
+    public function isStudentInClass($class_id, $user_id)
+    {
+        $studentId = $this->getStudentIdbyIdUser($user_id);
+        $classController = new ClassController();
+        $classesStudent = $classController->getClassesByStudentId($studentId);
+        foreach ($classesStudent as $class) {
+            if ($class['id'] == $class_id) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 

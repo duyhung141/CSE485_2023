@@ -25,13 +25,16 @@ session_start();
             ?>
             <div class="col">
                 <div class="card shadow-sm">
-                    <a class="text-decoration-none" href="attendance.php">
-                        <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="../Resource/img/course.jpg"></img>
-                        <div class="card-body">
-                            <h3><?php echo $course['name'] ?></h3>
-                            <p class="text-dark"><?php echo $course['description'] ?></p>
-                        </div>
-                    </a>
+                    <form action="">
+                        <a class="text-decoration-none" href="attendance.php?id=<?php echo $course['id']; ?>">
+                            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="../Resource/img/course.jpg" />
+                            <div class="card-body">
+                                <h3><?php echo $course['name']; ?></h3>
+                                <p class="text-dark"><?php echo $course['description']; ?></p>
+                            </div>
+                        </a>
+                    </form>
+
                 </div>
 
             </div>

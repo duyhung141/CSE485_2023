@@ -1,8 +1,9 @@
 <?php
 include_once '../Controllers/courseController.php';
+session_start();
+
 $courseController = new CourseController();
 $data = $courseController->getAll();
-session_start();
 ?>
 <!doctype html>
 <html lang="en">

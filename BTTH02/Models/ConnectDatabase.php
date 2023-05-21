@@ -19,18 +19,6 @@ class ConnectDatabase
         return $this->conn;
     }
 
-    public function executeQuery($sql){
-        $dbConn = new ConnectDatabase();
-        $conn = $dbConn->getConnection();
-        $stmt = $conn->query($sql);
-
-        $students = [];
-        while ($row = $stmt->fetch()){
-            $student = new Student($row['id'], $row['name'], $row['birth'], $row['contact'], $row['user_id']);
-            array_push($students, $student);
-        }
-        return $students;
-    }
 }
 ?>
 

@@ -40,7 +40,6 @@ class AttendanceController
             $sql = "INSERT INTO attendance (course_id, student_id, date, class_id) VALUES (?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$course_id, $studentId, $date, $class_id]);
-
         }
     }
 

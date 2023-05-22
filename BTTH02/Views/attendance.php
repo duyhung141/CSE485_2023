@@ -40,11 +40,18 @@ $classes = $classController->getAll($id);
                             <p class="mb-0 opacity-75">ATTENDANCE </p>
                             <h6 class="mb-0"><?php echo $class['name'] ?></h6>
                         </div>
-                        <form action="do-attendance.php" method="POST">
-                            <input type="text" name="class_id" value="<?php echo $class['id'];?>" hidden>
-                            <input type="text" name="course_id" value="<?php echo $class['course_id'];?>" hidden>
-                            <button type="submit" class="btn btn-info">Điểm danh</button>
-                        </form>
+                        <div class="d-flex gap-3">
+                            <form action="do-attendance.php" method="POST">
+                                <input type="text" name="class_id" value="<?php echo $class['id'];?>" hidden>
+                                <input type="text" name="course_id" value="<?php echo $class['course_id'];?>" hidden>
+                                <button type="submit" class="btn btn-info">Điểm danh</button>
+                            </form>
+                            <form action="dashboard.php" method="post">
+                                <input type="text" name="class_id" value="<?php echo $class['id'];?>" hidden>
+                                <button type="submit" class="btn btn-warning">Thông tin điểm danh</button>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             <?php } ?>

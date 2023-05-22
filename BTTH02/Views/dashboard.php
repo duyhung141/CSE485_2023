@@ -8,6 +8,9 @@ if (!isset($_SESSION['user_id'])) {
 }
 else{
     $id=$_SESSION['user_id'];
+    if (isset($_POST['class_id'])) {
+        $class_id = $_POST['class_id'];
+    }
 }
 $studentController = new StudentController();
 $name_student = $studentController->getName($id);
@@ -41,7 +44,7 @@ $name_student = $studentController->getName($id);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
 <script>
     $(document).ready(function () {
-        var data = <?php echo json_encode($attendanceController->getAttendance($id)); ?>;
+        var data = <?php echo json_encode($attendanceController->getAttendance($id,$class_id)); ?>;
         console.log(data);
         function checkAttendance(date) {
             var targetDate = moment(date).format('YYYY-MM-DD');

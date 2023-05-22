@@ -6,15 +6,15 @@ include_once '../Controllers/studentController.php';
 
 class AttendanceController
 {
-    public function getAttendance($id)
+    public function getAttendance($id,$class_id)
     {
         $studentController = new StudentController();
         $studentId = $studentController->getStudentIdbyIdUser($id);
         $pdo = new ConnectDatabase();
         $conn = $pdo->getConnection();
-        $sql = "SELECT date FROM attendance WHERE student_id=? and is_absent=0";
+        $sql = "SELECT date FROM attendance WHERE student_id=? and class_id=? and is_absent=0";
         $stmt = $conn->prepare($sql);
-        $stmt->execute([$studentId]);
+        $stmt->execute([$studentId,$class_id]);
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }

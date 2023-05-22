@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 19, 2023 lúc 07:18 AM
+-- Thời gian đã tạo: Th5 22, 2023 lúc 05:43 AM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.0.23
 
@@ -32,19 +32,22 @@ CREATE TABLE `attendance` (
   `course_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `is_absent` tinyint(1) NOT NULL DEFAULT 0,
-  `date` date NOT NULL
+  `date` date NOT NULL,
+  `class_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `attendance`
 --
 
-INSERT INTO `attendance` (`id`, `course_id`, `student_id`, `is_absent`, `date`) VALUES
-(1, 1, 1, 0, '2023-05-16'),
-(2, 1, 2, 0, '2023-05-16'),
-(3, 1, 3, 0, '2023-05-16'),
-(4, 1, 4, 0, '2023-05-16'),
-(5, 1, 1, 0, '2023-05-18');
+INSERT INTO `attendance` (`id`, `course_id`, `student_id`, `is_absent`, `date`, `class_id`) VALUES
+(1, 1, 1, 0, '2023-05-16', 1),
+(2, 1, 2, 0, '2023-05-16', 1),
+(3, 1, 3, 0, '2023-05-16', 1),
+(4, 1, 4, 0, '2023-05-16', 1),
+(5, 1, 1, 0, '2023-05-18', 1),
+(6, 1, 1, 0, '2023-05-20', 1),
+(7, 1, 1, 0, '2023-05-21', 1);
 
 -- --------------------------------------------------------
 
@@ -55,6 +58,7 @@ INSERT INTO `attendance` (`id`, `course_id`, `student_id`, `is_absent`, `date`) 
 CREATE TABLE `classes` (
   `id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
   `date_start` date NOT NULL,
   `date_end` date NOT NULL,
   `semester` int(10) NOT NULL
@@ -64,8 +68,11 @@ CREATE TABLE `classes` (
 -- Đang đổ dữ liệu cho bảng `classes`
 --
 
-INSERT INTO `classes` (`id`, `course_id`, `date_start`, `date_end`, `semester`) VALUES
-(1, 1, '2023-04-17', '2023-06-18', 2);
+INSERT INTO `classes` (`id`, `course_id`, `name`, `date_start`, `date_end`, `semester`) VALUES
+(1, 1, '62THNB', '2023-04-17', '2023-06-18', 2),
+(2, 1, '62THVA', '2023-04-17', '2023-06-18', 2),
+(3, 2, '62THNB', '2023-04-17', '2023-06-18', 2),
+(4, 3, '62THNB', '2023-02-15', '2023-06-18', 1);
 
 -- --------------------------------------------------------
 
@@ -84,7 +91,9 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `name`, `description`) VALUES
-(1, 'Công nghệ Web', 'Môn học gây lú cực mạnh');
+(1, 'Công nghệ Web', 'Môn học gây lú cực mạnh'),
+(2, 'Học sâu', 'Môn học gây trầm cảm'),
+(3, 'An toàn bảo mật thông tin', 'Môn học chill chill');
 
 -- --------------------------------------------------------
 
@@ -284,19 +293,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `students`
